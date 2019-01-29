@@ -3,16 +3,21 @@
 var fs= require('fs'); 
 var request = require('request'); 
 
+//Path of the file to be uploaded. 
+var upfile = ' ';
 
-var upfile = '/opt/3genlabs/hawk/syntheticnode/service/shellmonitor/sandbox/'+process.env.CP_UNSAFE_VAR_fileName;
+//Endpoint
+var url = ' ';
+
+
 fs.readFile(upfile, function(err, content){
     if(err){
         console.error(err);
     }
 
 
-var url = process.env.CP_UNSAFE_VAR_URL;
-    var boundary = "xxxxxxxxxx";
+
+    var boundary = "------------------------";
     var data = "";
     data += "--" + boundary + "\r\n";
     data += "Content-Disposition: form-data; name=\"file\"; filename=\"" + upfile + "\"\r\n";
